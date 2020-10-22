@@ -1,0 +1,28 @@
+{
+  "name": "fund-data-helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "csv-parse": "^4.12.0",
+    "csv-parser": "^2.3.3",
+    "csv-stringify": "^5.5.1",
+    "csv-writer": "^1.6.0",
+    "dom-parser": "^0.1.6",
+    "node-fetch": "^2.6.1"
+  },
+  "scripts": {
+    "start": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milenvoutchev/fund-data-helper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milenvoutchev/fund-data-helper/issues"
+  },
+  "homepage": "https://github.com/milenvoutchev/fund-data-helper#readme",
+  "type": "module"
+}
