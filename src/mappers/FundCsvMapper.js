@@ -3,7 +3,9 @@ class FundCsvMapper {
     const csv = {
       name: fund.name,
       isin: fund.isin,
-      runningCosts: fund.runningCosts
+      runningCosts: fund.runningCosts,
+      initialFee: fund.initialFee,
+      switchingFee: fund.switchingFee,
     }
 
     fund.performance.forEach((perf) => {

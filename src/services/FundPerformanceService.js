@@ -1,15 +1,25 @@
 class FundPerformanceService {
   performanceProvider;
-  constructor({ performanceProvider}) {
+  fund;
+  constructor({ performanceProvider, fund}) {
     this.performanceProvider = performanceProvider;
+    this.fund = fund;
   }
 
-  async getPerformance(fund) {
-    return await this.performanceProvider.fetchPerformance(fund);
+  async getPerformance() {
+    return await this.performanceProvider.fetchPerformance(this.fund);
   }
 
-  async getRunningCosts(fund) {
-    return await this.performanceProvider.fetchRunningCosts(fund);
+  async getRunningCosts() {
+    return await this.performanceProvider.fetchRunningCosts(this.fund);
+  }
+
+  async getInitialFee() {
+    return await this.performanceProvider.fetchInitialFee(this.fund);
+  }
+
+  async getSwitchingFee() {
+    return await this.performanceProvider.fetchSwitchingFee(this.fund);
   }
 }
 

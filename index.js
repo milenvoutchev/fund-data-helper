@@ -10,15 +10,18 @@ import OnvistaProvider from "./src/dataProviders/OnvistaProvider.js";
 const inFile = './data/export-isin.csv'
 const outFile = './data/output.csv'
 const onvistaProvider = new OnvistaProvider();
-const fundPerformanceService = new FundPerformanceService({performanceProvider: onvistaProvider});
 
 (async function () {
   const fileContent = fs.readFileSync(inFile);
   const records = parse(fileContent, {columns: true});
   const fundsForCsv = await Promise.all(records.map(async (record) => {
     const fund = AllianzEtfProcessor.createFundFromRow(record);
-    fund.performance = await fundPerformanceService.getPerformance(fund);
-    fund.runningCosts = await fundPerformanceService.getRunningCosts(fund);
+    const fundPerformanceService = new FundPerformanceService({performanceProvider: onvistaProvider, fund});
+
+    fund.performance = await fundPerformanceService.getPerformance();
+    fund.runningCosts = await fundPerformanceService.getRunningCosts();
+    fund.initialFee = await fundPerformanceService.getInitialFee();
+    fund.switchingFee = await fundPerformanceService.getSwitchingFee();
 
     return FundCsvMapper.createFromFund(fund);
   }));
